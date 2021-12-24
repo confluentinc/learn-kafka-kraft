@@ -15,12 +15,8 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  # - name: Make create cluster script executable
-  #   command: chmod +x kraft/scripts/create-cluster-id.sh
-  # - name: Make update run script executable
-  #   command: chmod +x kraft/scripts/update-run.sh
   - name: Generate cluster id
-    command: kraft/scripts/create-cluster-id.sh
+    command: kraft/scripts/create_cluster_id.sh
   - name: Update hosts file
     command: cp kraft/lab-initial-files/hosts /etc
 
