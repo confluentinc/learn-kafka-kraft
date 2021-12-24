@@ -1,0 +1,175 @@
+version: "3.5"
+services:
+  server-4:
+    image: confluentinc/cp-kafka:7.0.1-1-ubi8
+
+    hostname: server-4
+    container_name: server-4
+    depends_on:
+      - server-1
+      - server-2
+      - server-3
+    ports:
+      - "19092:19092"
+    environment:
+      KAFKA_LISTENERS: BROKER://server-4:9092,EXTERNAL://server-4:19092,CONTROLLER://server-4:9093
+      KAFKA_ADVERTISED_LISTENERS: BROKER://server-4:9092,EXTERNAL://server-4:19092
+      KAFKA_INTER_BROKER_LISTENER_NAME: BROKER
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,BROKER:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_PROCESS_ROLES: 'broker'
+      KAFKA_NODE_ID: 4
+      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@server-1:9093,2@server-2:9093,3@server-3:9093'
+      KAFKA_METADATA_MAX_RETENTION_MS: 600000
+      KAFKA_METADATA_LOG_MAX_RECORD_BYTES_BETWEEN_SNAPSHOTS: 1000000
+      KAFKA_LOG_DIRS: '/tmp/kraft-combined-logs'
+    volumes:
+      - ./scripts/update_run.sh:/tmp/update_run.sh
+      - ./clusterID:/tmp/clusterID
+    command: "bash -c '/tmp/update_run.sh && /etc/confluent/docker/run'"
+
+  server-5:
+    image: confluentinc/cp-kafka:7.0.1-1-ubi8
+
+    hostname: server-5
+    container_name: server-5
+    depends_on:
+      - server-1
+      - server-2
+      - server-3
+    ports:
+      - "29092:29092"
+    environment:
+      KAFKA_LISTENERS: BROKER://server-5:9092,EXTERNAL://server-5:29092,CONTROLLER://server-5:9093
+      KAFKA_ADVERTISED_LISTENERS: BROKER://server-5:9092,EXTERNAL://server-5:29092
+      KAFKA_INTER_BROKER_LISTENER_NAME: BROKER
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,BROKER:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_PROCESS_ROLES: 'broker'
+      KAFKA_NODE_ID: 5
+      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@server-1:9093,2@server-2:9093,3@server-3:9093'
+      KAFKA_METADATA_MAX_RETENTION_MS: 600000
+      KAFKA_METADATA_LOG_MAX_RECORD_BYTES_BETWEEN_SNAPSHOTS: 1000000
+      KAFKA_LOG_DIRS: '/tmp/kraft-combined-logs'
+    volumes:
+      - ./scripts/update_run.sh:/tmp/update_run.sh
+      - ./clusterID:/tmp/clusterID
+    command: "bash -c '/tmp/update_run.sh && /etc/confluent/docker/run'"
+
+  server-6:
+    image: confluentinc/cp-kafka:7.0.1-1-ubi8
+
+    hostname: server-6
+    container_name: server-6
+    depends_on:
+      - server-1
+      - server-2
+      - server-3
+    ports:
+      - "39092:39092"
+    environment:
+      KAFKA_LISTENERS: BROKER://server-6:9092,EXTERNAL://server-6:39092,CONTROLLER://server-6:9093
+      KAFKA_ADVERTISED_LISTENERS: BROKER://server-6:9092,EXTERNAL://server-6:39092
+      KAFKA_INTER_BROKER_LISTENER_NAME: BROKER
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,BROKER:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_PROCESS_ROLES: 'broker'
+      KAFKA_NODE_ID: 6
+      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@server-1:9093,2@server-2:9093,3@server-3:9093'
+      KAFKA_METADATA_MAX_RETENTION_MS: 600000
+      KAFKA_METADATA_LOG_MAX_RECORD_BYTES_BETWEEN_SNAPSHOTS: 1000000
+      KAFKA_LOG_DIRS: '/tmp/kraft-combined-logs'
+    volumes:
+      - ./scripts/update_run.sh:/tmp/update_run.sh
+      - ./clusterID:/tmp/clusterID
+    command: "bash -c '/tmp/update_run.sh && /etc/confluent/docker/run'"
+
+  server-1:
+    image: confluentinc/cp-kafka:7.0.1-1-ubi8
+
+    hostname: server-1
+    container_name: server-1
+    ports:
+      - "39094:39094"
+    environment:
+      #KAFKA_LISTENERS: BROKER://server-1:9092,CONTROLLER://server-1:9093
+      #KAFKA_ADVERTISED_LISTENERS: BROKER://server-1:9092
+
+      KAFKA_LISTENERS: BROKER://server-1:9092,EXTERNAL://server-1:39094,CONTROLLER://server-1:9093
+      KAFKA_ADVERTISED_LISTENERS: BROKER://server-1:9092,EXTERNAL://server-1:39094
+
+      KAFKA_INTER_BROKER_LISTENER_NAME: BROKER
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,BROKER:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_PROCESS_ROLES: 'controller,broker'
+      KAFKA_NODE_ID: 1
+      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@server-1:9093,2@server-2:9093,3@server-3:9093'
+      KAFKA_METADATA_MAX_RETENTION_MS: 600000
+      KAFKA_METADATA_LOG_MAX_RECORD_BYTES_BETWEEN_SNAPSHOTS: 1000000
+      KAFKA_LOG_DIRS: '/tmp/kraft-combined-logs'
+    volumes:
+      - ./scripts/update_run.sh:/tmp/update_run.sh
+      - ./clusterID:/tmp/clusterID
+    command: "bash -c '/tmp/update_run.sh && /etc/confluent/docker/run'"
+
+  server-2:
+    image: confluentinc/cp-kafka:7.0.1-1-ubi8
+
+    hostname: server-2
+    container_name: server-2
+    ports:
+      - "39095:39095"
+    environment:
+      #KAFKA_LISTENERS: BROKER://server-2:9092,CONTROLLER://server-2:9093
+      #KAFKA_ADVERTISED_LISTENERS: BROKER://server-2:9092
+
+      KAFKA_LISTENERS: BROKER://server-2:9092,EXTERNAL://server-2:39095,CONTROLLER://server-2:9093
+      KAFKA_ADVERTISED_LISTENERS: BROKER://server-2:9092,EXTERNAL://server-2:39095
+
+      KAFKA_INTER_BROKER_LISTENER_NAME: BROKER
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,BROKER:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_PROCESS_ROLES: 'controller,broker'
+      KAFKA_NODE_ID: 2
+      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@server-1:9093,2@server-2:9093,3@server-3:9093'
+      KAFKA_METADATA_MAX_RETENTION_MS: 600000
+      KAFKA_METADATA_LOG_MAX_RECORD_BYTES_BETWEEN_SNAPSHOTS: 1000000
+      KAFKA_LOG_DIRS: '/tmp/kraft-combined-logs'
+    volumes:
+      - ./scripts/update_run.sh:/tmp/update_run.sh
+      - ./clusterID:/tmp/clusterID
+    command: "bash -c '/tmp/update_run.sh && /etc/confluent/docker/run'"
+
+  server-3:
+    image: confluentinc/cp-kafka:7.0.1-1-ubi8
+
+    hostname: server-3
+    container_name: server-3
+    ports:
+      - "39096:39096"
+    environment:
+      #KAFKA_LISTENERS: BROKER://server-3:9092,CONTROLLER://server-3:9093
+      #KAFKA_ADVERTISED_LISTENERS: BROKER://server-3:9092
+
+      KAFKA_LISTENERS: BROKER://server-3:9092,EXTERNAL://server-3:39096,CONTROLLER://server-3:9093
+      KAFKA_ADVERTISED_LISTENERS: BROKER://server-3:9092,EXTERNAL://server-3:39096
+
+      KAFKA_INTER_BROKER_LISTENER_NAME: BROKER
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,BROKER:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_PROCESS_ROLES: 'controller,broker'
+      KAFKA_NODE_ID: 3
+      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@server-1:9093,2@server-2:9093,3@server-3:9093'
+      KAFKA_METADATA_MAX_RETENTION_MS: 600000
+      KAFKA_METADATA_LOG_MAX_RECORD_BYTES_BETWEEN_SNAPSHOTS: 1000000
+      KAFKA_LOG_DIRS: '/tmp/kraft-combined-logs'
+    volumes:
+      - ./scripts/update_run.sh:/tmp/update_run.sh
+      - ./clusterID:/tmp/clusterID
+    command: "bash -c '/tmp/update_run.sh && /etc/confluent/docker/run'"

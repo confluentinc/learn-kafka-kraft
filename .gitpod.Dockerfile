@@ -20,5 +20,3 @@ RUN curl -sL --http1.1 https://cnfl.io/cli | sh -s -- -b /home/gitpod/confluent-
     /home/gitpod/confluent-${CONFLUENT_VERSION}/bin/confluent completion bash > ~/.local/share/bash-completion/confluent
 
 ENV PATH=/home/gitpod/.sdkman/candidates/java/current/bin:/home/gitpod/confluent-${CONFLUENT_VERSION}/bin:$PATH
-# Install datagen connector
-RUN confluent-hub install --no-prompt confluentinc/kafka-connect-datagen:0.5.2
