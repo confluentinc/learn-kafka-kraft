@@ -3,4 +3,4 @@ Kafka KRaft mode playground. This is meant to provide a 1-click experience with 
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/confluentinc/learn-kafka-kraft)
 
-[Open the Exercise Guide](http://confluent-learn-kafka.s3-website-us-west-2.amazonaws.com/kraft-playground/)
+[Open the Exercise Guide^](http://confluent-learn-kafka.s3-website-us-west-2.amazonaws.com/kraft-playground/)
