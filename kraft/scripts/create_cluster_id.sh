@@ -1,1 +1,1 @@
-kafka-storage random-uuid > /home/training/kraft/clusterID
+kafka-storage random-uuid > /workspace/kraft-playground/kraft/clusterID

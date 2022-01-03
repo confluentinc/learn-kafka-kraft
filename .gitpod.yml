@@ -16,11 +16,12 @@ image:
 
 tasks:
   - name: Generate cluster id
-    command: kraft/scripts/create_cluster_id.sh
-  - name: Update hosts file
-    command: cp kraft/lab-initial-files/hosts /etc
+    command: /workspace/kraft-playground/kraft/scripts/create_cluster_id.sh
 
-ports:
+  - name: Pre-load docker image to workspace 
+    command: docker pull confluentinc/cp-kafka:7.0.1-1-ubi8
+
+# ports:
     
   # Confluent Server (broker)
   # - port: 9092
