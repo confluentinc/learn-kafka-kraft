@@ -16,10 +16,10 @@ image:
 
 tasks:
   - name: Generate cluster id
-    command: /workspace/learn-kafka-kraft/kraft/scripts/create_cluster_id.sh
+    command: /workspace/kraft-playground/kraft/scripts/create_cluster_id.sh
 
   - name: Pre-load docker image to workspace 
-    command: docker pull confluentinc/cp-kafka:7.1.0-1-ubi8
+    command: docker pull confluentinc/cp-server:7.1.0-1-ubi8
 
 # ports:
     
