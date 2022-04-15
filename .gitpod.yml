@@ -22,7 +22,7 @@ tasks:
     command: docker pull confluentinc/cp-kafka:7.1.0-1-ubi8
 
   - name: Install docker-compose version 2.4.1 
-    command: curl -SL https://github.com/docker/compose/releases/download/v2.4.1/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
+    command: sudo curl -SL https://github.com/docker/compose/releases/download/v2.4.1/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
 
 # ports:
     
