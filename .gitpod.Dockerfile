@@ -16,4 +16,3 @@ RUN curl -O https://packages.confluent.io/archive/${CONFLUENT_VERSION_SHORT}/con
     unzip confluent-${CONFLUENT_VERSION}.zip
 
 ENV PATH=/home/gitpod/.sdkman/candidates/java/current/bin:/home/gitpod/confluent-${CONFLUENT_VERSION}/bin:$PATH
-
