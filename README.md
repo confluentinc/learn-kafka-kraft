@@ -1,6 +1,6 @@
 # Apache Kafka® KRaft Mode Playground
 
-Kafka KRaft mode playground. This is meant to provide a 1-click experience with a Kafka KRaft mode cluster.
+This is meant to provide a 1-click experience with a Kafka KRaft mode cluster.
 
 [![Open Gitpod workspace](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/confluentinc/learn-kafka-kraft)
 
