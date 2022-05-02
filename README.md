@@ -1,4 +1,4 @@
-# KRaft Playground
+# Apache Kafka® KRaft Playground
 
 Kafka KRaft mode playground. This is meant to provide a 1-click experience with a Kafka KRaft mode cluster.
 
