@@ -19,7 +19,7 @@ tasks:
     command: /workspace/learn-kafka-kraft/kraft/scripts/create_cluster_id.sh
 
   - name: Pre-load docker image to workspace 
-    command: docker pull confluentinc/cp-kafka:7.1.0-1-ubi8
+    command: docker pull confluentinc/cp-kafka:7.2.2-1-ubi8
 
   - name: Install docker-compose version 2.4.1 
     command: sudo curl -SL https://github.com/docker/compose/releases/download/v2.4.1/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
